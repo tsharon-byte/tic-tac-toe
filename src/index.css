@@ -13,13 +13,35 @@ body {
 
 .board {
     background-color: rgba(125, 125, 125, 0.9);
-    margin: 50px auto;
+    margin: 20px auto;
     width: calc(var(--buttonWidth) * var(--buttonNumber) + 15px);
     height: calc(var(--buttonWidth) * var(--buttonNumber) + 15px);
 }
 
-button {
+.GameField {
     width: var(--buttonWidth);
     height: var(--buttonWidth);
+}
+.X{
+    color: MediumSlateBlue;
     font-size: 87px;
+}
+.O{
+    color: rgb(255,130,171);
+    font-size: 67px;
+}
+.StartNewGame{
+    background-color: darkorchid;
+    margin: 20px auto;
+    padding: 20px;
+}
+.GameOngoing{
+    background-color: aliceblue;
+    margin: 20px auto;
+    padding: 20px;
+}
+.Winner{
+    color: deeppink;
+}
+.Common{
 }

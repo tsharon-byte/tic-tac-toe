@@ -5,7 +5,8 @@ import './index.css';
 let defaultState = {
     currentPlayer: "X",
     buttonsList: Array(9).fill(null),
-    gameFinished: false
+    gameFinished: false,
+    message:"Ваш шаг, игрок X"
 };
 
 class GameField extends React.PureComponent {
@@ -86,13 +87,13 @@ function checkGameFinished(currentIx, buttonsList) {
         if (mas.includes(+currentIx)) {
             let [a, b, c] = mas;
             if (buttonsList[a] === buttonsList[b] && buttonsList[b] === buttonsList[c])
-                return {finished: true, indexes: mas};
+                return true;
         }
     }
-    return {finished: false};
+    return false;
 }
 
-class App extends React.Component {
+class App extends React.PureComponent {
 
     constructor(props) {
         super(props);
@@ -115,12 +116,24 @@ class App extends React.Component {
             return;
         }
         let buttons = this.state.buttonsList.slice();
+        let message="";
         buttons[event.target.value] = this.state.currentPlayer;
         let gameFinished = checkGameFinished(event.target.value, buttons);
+        if(gameFinished){
+            message="Игра окончена.  Победитель: " + this.state.currentPlayer;
+        }
+        else{gameFinished = !buttons.includes(null);
+        if(gameFinished){
+            message = "Игра окончена. Ничья."
+        }
+        else{
+            message="Ваш ход, игрок " + currentPlayer;
+        }}
         this.setState({
             currentPlayer: currentPlayer,
             buttonsList: buttons,
-            gameFinished: gameFinished.finished
+            gameFinished: gameFinished,
+            message:message
         });
     }
 
@@ -130,10 +143,10 @@ class App extends React.Component {
                 <h1>Крестики-нолики</h1>
                 <Board buttonsList={this.state.buttonsList} onClick={this.handleClick}/>
                 <label className={this.state.gameFinished?"Winner":"Common"}>
-                    {this.state.gameFinished ? ("Игра окончена.  Победитель: " + (this.state.currentPlayer === "X" ? "O" : "X")) : ("Ваш шаг, игрок " + this.state.currentPlayer)}
+                    {this.state.message}
                 </label>
-                {/*<ClearGame onClick={this.handleClearClick()} text="Начать игру"*/}
-                {/*           className={this.state.gameFinished ? "StartNewGame" : "GameOngoing"}/>*/}
+                <ClearGame onClick={this.handleClearClick} text="Начать игру"
+                           className={this.state.gameFinished ? "StartNewGame" : "GameOngoing"}/>
             </div>
         );
     }

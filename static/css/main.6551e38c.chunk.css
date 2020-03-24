@@ -1,0 +1,2 @@
+:root{--buttonWidth:100px;--buttonNumber:3}body{background-color:silver}#root{text-align:center}.board{background-color:hsla(0,0%,49%,.9);margin:50px auto;width:315px;width:calc(var(--buttonWidth)*var(--buttonNumber) + 15px);height:315px;height:calc(var(--buttonWidth)*var(--buttonNumber) + 15px)}button{width:100px;width:var(--buttonWidth);height:100px;height:var(--buttonWidth);font-size:87px}
+/*# sourceMappingURL=main.6551e38c.chunk.css.map */

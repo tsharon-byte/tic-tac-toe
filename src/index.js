@@ -37,36 +37,14 @@ function convertText(text) {
 
 class Board extends React.PureComponent {
     render() {
+        let mas = [];
+        for (let i = 0; i < 9; i++) {
+            let text = convertText(this.props.buttonsList[i]);
+            mas.push(<GameField id={i} onClick={this.props.onClick} text={text}/>);
+        }
         return (
             <div className="board">
-                <table>
-                    <tbody>
-                    <tr>
-                        <td><GameField text={convertText(this.props.buttonsList[0])} id={0}
-                                       onClick={this.props.onClick}/></td>
-                        <td><GameField text={convertText(this.props.buttonsList[1])} id={1}
-                                       onClick={this.props.onClick}/></td>
-                        <td><GameField text={convertText(this.props.buttonsList[2])} id={2}
-                                       onClick={this.props.onClick}/></td>
-                    </tr>
-                    <tr>
-                        <td><GameField text={convertText(this.props.buttonsList[3])} id={3}
-                                       onClick={this.props.onClick}/></td>
-                        <td><GameField text={convertText(this.props.buttonsList[4])} id={4}
-                                       onClick={this.props.onClick}/></td>
-                        <td><GameField text={convertText(this.props.buttonsList[5])} id={5}
-                                       onClick={this.props.onClick}/></td>
-                    </tr>
-                    <tr>
-                        <td><GameField text={convertText(this.props.buttonsList[6])} id={6}
-                                       onClick={this.props.onClick}/></td>
-                        <td><GameField text={convertText(this.props.buttonsList[7])} id={7}
-                                       onClick={this.props.onClick}/></td>
-                        <td><GameField text={convertText(this.props.buttonsList[8])} id={8}
-                                       onClick={this.props.onClick}/></td>
-                    </tr>
-                    </tbody>
-                </table>
+                {mas}
             </div>
         );
     }

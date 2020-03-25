@@ -14,13 +14,20 @@ body {
 .board {
     background-color: rgba(125, 125, 125, 0.9);
     margin: 20px auto;
-    width: calc(var(--buttonWidth) * var(--buttonNumber) + 15px);
-    height: calc(var(--buttonWidth) * var(--buttonNumber) + 15px);
+    width: calc(var(--buttonWidth) * var(--buttonNumber) );
+    height: calc(var(--buttonWidth) * var(--buttonNumber) );
+    display:flex;
+    flex-wrap: wrap;
 }
 
 .GameField {
     width: var(--buttonWidth);
     height: var(--buttonWidth);
+}
+
+.GameField ::after {
+    clear: both;
+    content: "";
 }
 .X{
     color: MediumSlateBlue;
